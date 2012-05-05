@@ -1,5 +1,5 @@
 all: node_modules/.done
-	node app.js
+	node src/app.js
 
 node_modules/.done:
 	mkdir -p node_modules
