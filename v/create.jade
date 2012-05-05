@@ -1,0 +1,29 @@
+form.well.form-search(style="width:500px")
+	table
+		tr
+			td
+				p Category
+			td
+				select.btn#category(style="width:100px")
+					each category in categories
+						option= category
+				i &nbsp;&nbsp;
+				select.btn#priority(style="width:100px")
+					each priority in priorities
+						option= priority
+		tr
+			td(valign="top")
+				p Contact
+			td
+				input.input-bug#yourname2(type="text",style="width:400px;height:30px",value="anonymous")
+		tr
+			td(valign="top")
+				p Title
+			td
+				input.input-bug#title(type="text",style="width:400px;height:30px")
+		tr
+			td(valign="top")
+				p Description&nbsp;&nbsp;
+			td
+				textarea#message(style="width:400px;height:250px")
+	a.btn.btn-primary.btn-medium(onclick="bugCreate()") Create

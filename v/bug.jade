@@ -1,0 +1,31 @@
+form.well.form-search#bug-open(style="width:500px;top:0px;height:38px;padding:5px")
+	div.pull-right
+		table
+			tr
+				td
+					input.input-big#bugid(style="height:30px;width:450px")
+				td
+					button.btn.btn-mini.pull-right(type="submit",style="height:30px;margin:4px",onclick="bugOpen()")
+						i.icon-search
+div#bugview
+div#replies
+div#reply(style="visibility:hidden")
+	br
+	form.well.form-search#bug-open(style="width:500px;")
+		table
+			tr
+				td(width="100px")
+					p Your name
+				td
+					input.input-big#yourname(style="width:100%;height:30px")
+			tr
+				td(width="100px")
+					p Bitcoin address
+				td
+					input.input-big#yourbtc(style="width:100%;height:30px")
+			tr
+				td(colspan="2")
+					textarea#message2(style="width:450px;height:100px")
+			tr
+				td(colspan="2")
+					button.btn.btn-primary(type="submit",style="margin:4px",onclick="bugReply()") Reply

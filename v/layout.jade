@@ -1,0 +1,37 @@
+html
+	head
+		title= title
+		include i/bootstrap
+		script(src="js/main.js")
+		script
+			$(function() {
+				bugViewOpen (false);
+				$('#tabs').tabs ();
+			});
+	body
+		div#spinner(style="visibility:hidden;position:absolute;left:0px")
+			img(src="img/spinner.gif")
+		div.container-fluid
+			div.span10#tabs(style="width:400px")
+				ul.tabs.nav.nav-tabs
+					a(href="/")
+						h2 #{name} bug tracker
+					br
+					li.active#tab-list
+						a(href="#list") List
+					li#tab-bug
+						a(href="#bug") Bug
+					li#tab-create
+						a(href="#create") Create
+					li#tab-about
+						a(href="#about") About
+					div.tab-content
+						div.tab-pane.active#list
+							include list
+						div.tab-pane#bug
+							include bug
+						div.tab-pane#create
+							include create
+						div.tab-pane#about
+							include about
+				include footer
