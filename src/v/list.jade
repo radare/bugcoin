@@ -1,9 +1,15 @@
 form.well.form-search(style="width:500px;padding:5px;top:0px;height:38px")
-	button.btn.btn-mini.pull-right(type="submit",style="height:30px;margin:4px",onclick="bugList()")
-		i.icon-refresh
-	button.btn.btn-mini.pull-right(type="submit",style="height:30px;margin:4px",onclick="bugSearch()")
-		i.icon-search
-	input.input-big.search-query.pull-right#keyword(type="text",style="width:400px;height:30px;margin:5px",onkeyup="bugSearch();")
+	div.pull-right
+		table
+			tr
+				td
+					input.input-big.search-query#keyword(type="text",style="width:400px;height:30px;margin:5px",onkeyup="bugSearch();")
+				td
+					button.btn.btn-mini.pull-right(type="submit",style="height:30px;margin:4px",onclick="bugSearch()")
+						i.icon-search
+				td
+					button.btn.btn-mini.pull-right(type="submit",style="height:30px;margin:4px",onclick="bugList()")
+						i.icon-refresh
 div#buglist
 br
 br
