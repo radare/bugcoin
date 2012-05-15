@@ -4,7 +4,7 @@
 var WebSocket = require ("ws");
 var bitcoin = require ("bitcoin");
 var economy = require ("./economy");
-var config = require ("./config");
+var config = require ("./config").agent;
 
 const uri = "ws://"+config.host+":"+config.port+"/agent";
 const JS = JSON.stringify;

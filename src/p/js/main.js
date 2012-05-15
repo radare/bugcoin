@@ -1,9 +1,9 @@
 const JS = JSON.stringify;
 const JP = JSON.parse;
 
-function replaceAll( text, busca, reemplaza ){
-	while (text.toString().indexOf(busca) != -1)
-		text = text.toString().replace(busca,reemplaza);
+function replaceAll (text, key, newkey){
+	while (text.toString().indexOf(key) != -1)
+		text = text.toString().replace(key,newkey);
 	return text;
 }
 

@@ -25,9 +25,9 @@ This software is still beta and there are known vulnerabilities,
 please. Use it with responsability and feel free to send patches
 fixing the bugs you found!
 
-			 .----------.
-		    .->  | frontend |
+	                 .----------.
+	            .->  | frontend |
 	.-------. ,'     `----------'
 	| agent |<._     .----------.
 	`-------'   `->  | bitcoind |
-			 `----------'
+	                 `----------'

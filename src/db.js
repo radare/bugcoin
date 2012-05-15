@@ -62,7 +62,7 @@ exports.del = function (b) {
 
 exports.set_status = function (b, s) {
 	if (store.bugs[b]) {
-console.log ("set new status " +s);
+		console.log ("set new status " +s);
 		store.bugs[b].status = s;
 	}
 }
@@ -73,8 +73,7 @@ exports.setBitcoinBalance = function (o, n) {
 }
 
 exports.setBitcoinAddress = function (o, n) {
-	var b = store.bugs[o];
-	if (b) {
+	if (store.bugs[o]) {
 		store.bugs[o].btc = n;
 		return true;
 	}

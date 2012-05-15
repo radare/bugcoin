@@ -35,6 +35,15 @@ const JS = JSON.stringify;
 const JP = JSON.parse;
 const JSHDR = {'Content-type': 'application/json'};
 
+function notSet () {
+	for (var i=0; i<arguments.length; i++) {
+		var arg = arguments[i];
+		if (!arg || arg == "")
+			return true;
+	}
+	return false;
+}
+
 function sendNextTask (c) {
 	var obj = db.getNextTask ();
 	if (obj !== undefined)
@@ -64,7 +73,7 @@ wss.on ('connection', function (c) {
 			}
 			break;
 		case 'new-address':
-console.log ("NEW ADDRESS FUN\n");
+			console.log ("NEW ADDRESS FUN\n");
 			if (logged) {
 				db.setBitcoinAddress (msg.bid, msg.address);
 			}
@@ -162,8 +171,12 @@ app.post ('/reply/:id', function (req, res) {
 	}
 	try {
 		var obj = JP (body);
-		db.set_reply (req.params.id, obj);
-		res.send ("success");
+		if (notSet (obj.name, obj.address, obj.message)) {
+			res.send ("fail");
+		} else {
+			db.set_reply (req.params.id, obj);
+			res.send ("success");
+		}
 	} catch (e) {
 		console.log ("/reply/:id  json parse error: ", e);
 		res.send ("fail");
@@ -184,6 +197,8 @@ function newBugFromMessage(b) {
 	else obj.priority = env.priorities[0];
 	obj.balance = undefined;
 	obj.timestamp = now;
+	if (notSet (obj.title, obj.name, obj.message))
+		return undefined;
 	return obj;
 }
 
@@ -203,7 +218,10 @@ app.post ('/create', function (req, res) {
 			// WTF: res.send(int) = error code, res.send(str) = body
 			res.send (""+bid);
 console.log ("saved as "+bid);
-		} else console.log ("Invalid bug data");
+		} else {
+			console.log ("Invalid bug data");
+			res.send ("");
+		}
 	} catch (e) {
 		console.log (e, "json parse error: ");
 	}
