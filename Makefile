@@ -15,4 +15,4 @@ node_modules/.done:
 	touch node_modules/.done
 
 sync:
-	cp -rf src/* ~/prg/bugcoin/src
+	cp -rf ~/prg/bugcoin/src/* src/
