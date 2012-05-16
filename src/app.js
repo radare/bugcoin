@@ -59,7 +59,12 @@ wss.on ('connection', function (c) {
 	console.log ("connected");
 	c.send (JS ({type:'login', seed:'SEED'}));
 	c.on ('message', function (m) {
-		var msg = JP (m);
+		try {
+			var msg = JP (m);
+		} catch (e) {
+			console.log ("Invalid json ", m);
+			return;
+		}
 		console.log (m);
 		switch (msg.type) {
 		case 'login':
@@ -143,6 +148,7 @@ console.log ("Search for ", str);
 app.get ('/list/:keyword', function (req, res) {
 	// TODO: parse arguments and pass it to list()
 	var kw = req.params.keyword;
+	kw = kw.toLowerCase ();
 	var bugs = kw? db.list (kw): db.list ();
 	console.log ("/kw/", kw);
 	res.send (JS (bugs), JSHDR);

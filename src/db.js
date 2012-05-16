@@ -81,6 +81,10 @@ exports.setBitcoinAddress = function (o, n) {
 }
 
 function findInBug(a,x,y) {
+	var title = x.title.toLowerCase ();
+	var message = x.message.toLowerCase ();
+	a = a.toLowerCase ();
+	y = y.toLowerCase ();
 	if (x.title.search (y)!=-1) return true;
 	if (x.message.search (y)!=-1) return true;
 	if (a.search (y)!=-1) return true;
@@ -91,8 +95,9 @@ exports.list = function(f) {
 	var bugs = {};
 	/* update balances */
 	for (var x in store.bugs) {
-		if (!f || f=="" || findInBug (x, store.bugs[x], f))
-			bugs[x] = store.bugs[x];
+		var k = store.bugs[x];
+		if (!f || f=="" || findInBug (x, k, f))
+			bugs[x] = k;
 		//bugs[x].balance = db.getBalance (x);
 	}
 	return bugs;
