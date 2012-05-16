@@ -1,3 +1,5 @@
+NWD=~/prg/bugcoin
+
 all: node_modules/.done
 	node ./src/app.js
 
@@ -15,4 +17,10 @@ node_modules/.done:
 	touch node_modules/.done
 
 sync:
-	cp -rf ~/prg/bugcoin/src/* src/
+	if [ -f .nodester.appconfig ]; \
+		cp -f ${NWD}/Makefile Makefile
+		cp -rf ${NWD}/src/* src/
+	else
+		cp -f Makefile ${NWD}/Makefile
+		cp -rf src/* ${NWD}/src
+	fi
